@@ -1,0 +1,18 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+       
+        LinkedHashMap<Integer,Integer>lr=new LinkedHashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(lr.containsKey(target-nums[i])){
+                System.out.println(lr.get(target-nums[i]));
+                return new int[]{lr.get(target-nums[i]), i};
+
+            }
+                lr.put(nums[i],i);
+            }
+        
+       return null;
+    }
+}
+
+//this Solution actually follows a unique logic of using HashMap and trying to find any value Exist!! we can do the same operation in any of the List
