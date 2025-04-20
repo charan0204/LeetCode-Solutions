@@ -1,0 +1,30 @@
+# This is a very intresting Problem on Recursion 
+"I recommed you to copy paste the code in editor and then understand"
+# Usally when we iterate the an array we will generate 2^n different possblities 
+# This problem tells us to avoid duplicates
+ public List<List<Integer>> subsetsWithDup(int[] nums) {
+   # Intially we sort the nums because we want all the duplicates in the same places [1,2,2]
+        Arrays.sort(nums);
+   # Create an empty list to store possbilites
+        List<List<Integer>> al=new ArrayList<>();
+   # call the recursion
+        find(0,nums,al,new ArrayList<>());
+   # return
+        return al;
+    }
+
+  private  void find(int index,int nums[],List<List<Integer>>ans,List<Integer>al){
+    # Add the possible list in the list ~ simply means previous combo
+       ans.add(new ArrayList<>(al));
+    # we have to try every possible in the array simply doing different combo the array something like the subarray
+       for(int i=index;i<nums.length;i++){
+         # if duplicate is found or same element is repeated
+        if(i!=index && nums[i]==nums[i-1])continue;
+        al.add(nums[i]);
+         # recursive calls for the rest
+        find(i+1,nums,ans,al);
+         #remove the element after obtaining its corresponding list
+        al.remove(al.size()-1);
+       }
+    }
+
